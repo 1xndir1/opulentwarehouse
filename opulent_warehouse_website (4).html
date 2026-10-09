@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Opulent Warehouse • Korean Sharing Warehouse Service</title>
+  
+  <!-- Google Fonts: Quicksand (Clean Aesthetic) & Mali (Cute Handwritten) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cortis: {
+              sage: '#7D9E83',
+              dark: '#486851',
+              light: '#EDF4EE',
+              ink: '#26211D'
+            },
+            cutie: {
+              cream: '#FAF6EE',
+              card: '#FFFDF9',
+              border: '#523E34',
+              pink: '#FFAEBC',
+              rose: '#F9D1D8',
+              butter: '#FFF3B0',
+              accent: '#E76F8E'
+            }
+          },
+          fontFamily: {
+            sans: ['"Quicksand"', 'sans-serif'],
+            cute: ['"Mali"', 'cursive']
+          },
+          boxShadow: {
+            'retro': '3px 3px 0px #523E34',
+            'retro-sm': '2px 2px 0px #523E34',
+            'retro-lg': '4px 4px 0px #523E34'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Gingham/Checkered Pattern */
+    .gingham-bg {
+      background-color: #FAF5EB;
+      background-image: 
+        linear-gradient(45deg, rgba(231, 111, 142, 0.06) 25%, transparent 25%), 
+        linear-gradient(-45deg, rgba(231, 111, 142, 0.06) 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, rgba(231, 111, 142, 0.06) 75%), 
+        linear-gradient(-45deg, transparent 75%, rgba(231, 111, 142, 0.06) 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+    }
+
+    /* Awning Roof Stripes */
+    .awning-roof {
+      background: repeating-linear-gradient(
+        90deg,
+        #FFAEBC,
+        #FFAEBC 28px,
+        #FFFDF9 28px,
+        #FFFDF9 56px
+      );
+    }
+
+    /* Scalloped Awning Hem */
+    .awning-scallop {
+      background-image: radial-gradient(circle at 14px 0px, transparent 14px, #FFFDF9 15px);
+      background-size: 28px 16px;
+      background-repeat: repeat-x;
+      height: 16px;
+    }
+
+    /* Retro Borders */
+    .cute-border {
+      border: 2px solid #523E34;
+    }
+    .cute-dashed {
+      border: 2px dashed #523E34;
+    }
+    .cute-dotted {
+      border: 2px dotted #8C7A70;
+    }
+
+    /* Animations */
+    @keyframes planeFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(3deg); }
+    }
+    .animate-plane {
+      animation: planeFloat 2.6s ease-in-out infinite;
+    }
+
+    @keyframes cloudDrift {
+      0%, 100% { transform: translateX(0px); }
+      50% { transform: translateX(8px); }
+    }
+    .animate-cloud {
+      animation: cloudDrift 3.5s ease-in-out infinite;
+    }
+
+    /* Hide standard scrollbars */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Cute Cloud Cursor */
+    html, body {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M23 18a4 4 0 0 0-3.8-2.7A6 6 0 0 0 8 16a4.5 4.5 0 0 0 .5 9h14.5a4 4 0 0 0 0-8z' fill='%23FFFFFF' stroke='%23523E34' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='18' r='1.2' fill='%23523E34'/%3E%3Ccircle cx='18' cy='18' r='1.2' fill='%23523E34'/%3E%3Cpath d='M14 20 Q15 21.5 16 20' stroke='%23523E34' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='19.5' r='1.5' fill='%23FFA6BA' opacity='0.7'/%3E%3Ccircle cx='20' cy='19.5' r='1.5' fill='%23FFA6BA' opacity='0.7'/%3E%3C/svg%3E") 6 12, auto;
+    }
+    button, a, input, select, textarea, label {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M23 18a4 4 0 0 0-3.8-2.7A6 6 0 0 0 8 16a4.5 4.5 0 0 0 .5 9h14.5a4 4 0 0 0 0-8z' fill='%23FFE4EC' stroke='%23E76F8E' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='18' r='1.2' fill='%23523E34'/%3E%3Ccircle cx='18' cy='18' r='1.2' fill='%23523E34'/%3E%3Cpath d='M14 20 Q15 21.5 16 20' stroke='%23523E34' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='19.5' r='1.5' fill='%23FF8DA1'/%3E%3Ccircle cx='20' cy='19.5' r='1.5' fill='%23FF8DA1'/%3E%3Cpolygon points='25,8 26.5,12 30.5,12 27.5,14.5 28.5,18.5 25,16 21.5,18.5 22.5,14.5 19.5,12 23.5,12' fill='%23FFD166' stroke='%23B8860B' stroke-width='0.8'/%3E%3C/svg%3E") 6 12, pointer !important;
+    }
+  </style>
+</head>
+<body class="gingham-bg text-[#3D2C24] font-sans antialiased min-h-screen py-3 sm:py-8 px-2 sm:px-4 flex justify-center items-start">
+
+  <!-- MAIN WINDOW WRAPPER -->
+  <div class="w-full max-w-4xl bg-cutie-cream cute-border rounded-[24px] sm:rounded-[28px] shadow-retro-lg overflow-hidden flex flex-col transition-all duration-300">
+    
+    <!-- 1. TOP WINDOW BAR -->
+    <header class="bg-[#523E34] text-[#FAF5EB] px-3 sm:px-4 py-2 flex items-center justify-between text-xs font-cute select-none">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FF8DA1] inline-block border border-[#3D2C24]"></span>
+        <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#FFE066] inline-block border border-[#3D2C24]"></span>
+        <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#70C1B3] inline-block border border-[#3D2C24]"></span>
+        <span class="ml-1 sm:ml-2 font-bold tracking-wide text-[11px] sm:text-xs">.⋆❀° Opulent Warehouse °❀⋆.</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 text-[11px] opacity-90 font-medium">
+        <span>Gyeongnam</span>
+        <i class="ph-bold ph-airplane text-cortis-sage"></i>
+        <span>Jakarta Barat</span>
+        <span>♡</span>
+      </div>
+    </header>
+
+    <!-- 2. AWNING HEADER -->
+    <div class="relative bg-white border-b-2 border-[#523E34]">
+      <div class="awning-roof h-12 sm:h-16 w-full flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Awning Banner -->
+        <div class="bg-white/95 px-3.5 sm:px-6 py-1 sm:py-1.5 rounded-full cute-border shadow-retro-sm flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm font-cute font-bold text-[#523E34] z-10 whitespace-nowrap">
+          <span class="text-pink-400">🌸</span>
+          <span>KR Service • Free CO Web</span>
+          <span class="text-pink-400">🌸</span>
+        </div>
+      </div>
+      <div class="awning-scallop w-full"></div>
+    </div>
+
+    <!-- 3. NAVIGATION TABS (Horizontal Scroll on Mobile) -->
+    <nav class="bg-[#FFFDF9] px-2 sm:px-3 py-2.5 sm:py-3 border-b-2 border-[#523E34] overflow-x-auto no-scrollbar">
+      <div class="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 min-w-max mx-auto px-1" id="nav-tabs-container">
+        
+        <button onclick="switchTab('about')" id="btn-tab-about" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-[#523E34] text-white shadow-retro-sm">
+          • About Us •
+        </button>
+
+        <button onclick="switchTab('alur')" id="btn-tab-alur" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40">
+          • Alur & Fasilitas •
+        </button>
+
+        <button onclick="switchTab('pricing')" id="btn-tab-pricing" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40">
+          • Harga EMS •
+        </button>
+
+        <button onclick="switchTab('calc')" id="btn-tab-calc" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40">
+          • Kalkulator •
+        </button>
+
+        <button onclick="switchTab('terms')" id="btn-tab-terms" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40">
+          • !Rules & TnC! •
+        </button>
+
+        <button onclick="switchTab('chat')" id="btn-tab-chat" class="nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40">
+          • Hubungi Admin •
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- 4. FLIGHT JOURNEY STORYBOARD (Visible only in 'About Us' tab) -->
+    <section id="flight-journey-section" class="bg-cutie-rose/25 border-b-2 border-[#523E34] pt-4 pb-4 px-3 sm:px-6 relative transition-all duration-300">
+      
+      <!-- Washi Tape Header -->
+      <div class="flex justify-center -mt-0.5 mb-2.5">
+        <div class="bg-[#FFD166] text-[#523E34] text-[11px] sm:text-xs font-cute font-bold px-4 py-1 cute-border shadow-retro-sm rounded-sm whitespace-nowrap inline-flex items-center gap-1.5 transform -rotate-1">
+          ✈️ FLIGHT JOURNEY ✈️
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-cute font-bold text-xs sm:text-base text-[#523E34] flex items-center gap-1.5">
+          <span>🎀</span> Alur Perjalanan Paketmu
+        </h2>
+        <span class="bg-cortis-sage/20 text-cortis-dark text-[10px] sm:text-[11px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full border border-cortis-sage">
+          ● Rutin 1x Seminggu
+        </span>
+      </div>
+
+      <!-- 4 Stepper Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5">
+        
+        <!-- Step 1 -->
+        <div class="bg-white rounded-xl p-2.5 sm:p-3 cute-border shadow-retro-sm text-center flex flex-col items-center justify-center relative">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-amber-50 cute-border flex items-center justify-center text-lg sm:text-xl mb-1 sm:mb-1.5">
+            🏢
+          </div>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-stone-500 font-bold">WAREHOUSE KR</span>
+          <h3 class="font-bold text-[11px] sm:text-xs text-[#523E34]">Gyeongnam</h3>
+          <span class="mt-1 text-[8px] sm:text-[9px] font-semibold text-pink-600 bg-pink-50 px-1.5 sm:px-2 py-0.5 rounded-full border border-pink-200">
+            Free Foto Arrived
+          </span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white rounded-xl p-2.5 sm:p-3 cute-border shadow-retro-sm text-center flex flex-col items-center justify-center relative">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-sky-50 cute-border flex items-center justify-center text-lg sm:text-xl mb-1 sm:mb-1.5 animate-plane">
+            ✈️
+          </div>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-stone-500 font-bold">EMS & CARGO</span>
+          <h3 class="font-bold text-[11px] sm:text-xs text-[#523E34]">Korea → Indo</h3>
+          <span class="mt-1 text-[8px] sm:text-[9px] font-semibold text-sky-700 bg-sky-50 px-1.5 sm:px-2 py-0.5 rounded-full border border-sky-200">
+            Tax & Clearance
+          </span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white rounded-xl p-2.5 sm:p-3 cute-border shadow-retro-sm text-center flex flex-col items-center justify-center relative">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-50 cute-border flex items-center justify-center text-lg sm:text-xl mb-1 sm:mb-1.5">
+            📦
+          </div>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-stone-500 font-bold">WAREHOUSE ID</span>
+          <h3 class="font-bold text-[11px] sm:text-xs text-[#523E34]">Jakarta Barat</h3>
+          <span class="mt-1 text-[8px] sm:text-[9px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 sm:px-2 py-0.5 rounded-full border border-emerald-200">
+            Sortir & Packing
+          </span>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-white rounded-xl p-2.5 sm:p-3 cute-border shadow-retro-sm text-center flex flex-col items-center justify-center relative">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-rose-50 cute-border flex items-center justify-center text-lg sm:text-xl mb-1 sm:mb-1.5">
+            🏡
+          </div>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-stone-500 font-bold">HOME DELIVERY</span>
+          <h3 class="font-bold text-[11px] sm:text-xs text-[#523E34]">Alamat Kamu</h3>
+          <span class="mt-1 text-[8px] sm:text-[9px] font-semibold text-amber-800 bg-amber-50 px-1.5 sm:px-2 py-0.5 rounded-full border border-amber-200">
+            Shopee / Manual
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Ekspedisi Badge -->
+      <div class="mt-3 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 text-[11px] sm:text-xs bg-white/80 p-2 sm:p-2.5 rounded-lg cute-dashed">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-amber-500">✨</span>
+          <span class="font-semibold text-[#523E34]">Ekspedisi Lokal:</span>
+          <span class="bg-amber-100/70 px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-bold text-amber-900">Shopee (JNE & Anteraja)</span>
+          <span class="bg-stone-100 px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-medium text-stone-700">Manual (H+1)</span>
+        </div>
+        <div class="text-[10px] sm:text-[11px] text-pink-600 font-bold font-cute">
+          Free Fee WH • Free Bantaek GS & CU
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MAIN CONTENT AREA (Profile Sidebar + Interactive Tabs) -->
+    <div class="p-2.5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-6 bg-cutie-cream">
+      
+      <!-- LEFT SIDEBAR: Contacts & Polaroid (Optimized for Mobile) -->
+      <aside id="main-profile-sidebar" class="md:col-span-4 flex flex-col gap-2.5 sm:gap-4 transition-all duration-200">
+        
+        <!-- POLAROID LOGO CARD (Hidden on mobile to save vertical scrolling space) -->
+        <div class="hidden sm:block bg-white rounded-2xl p-4 cute-border shadow-retro relative text-center">
+          
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-pink-200/80 -rotate-2 border-b border-pink-300"></div>
+
+          <div class="bg-stone-50 p-2.5 rounded-xl border border-stone-200 inline-block mb-2 shadow-inner">
+            <img id="avatar-img" 
+                 src="avatar.jpg" 
+                 alt="Opulent Warehouse" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=300&auto=format&fit=crop&q=80';"
+                 class="w-32 h-32 rounded-full object-cover border-2 border-[#523E34] shadow-sm mx-auto">
+          </div>
+
+          <div class="bg-pink-50 border border-pink-200 px-3 py-1 rounded-full text-xs font-cute font-bold text-[#E76F8E] inline-block mb-1.5">
+            ✨ Free Checkout Web Korea ✨
+          </div>
+
+          <p class="text-xs text-stone-600 font-medium leading-relaxed">
+            Jasa sharing warehouse Korea terpercaya
+          </p>
+
+          <div class="mt-3 pt-2.5 border-t border-dashed border-stone-200 flex items-center justify-center gap-3 text-xs font-cute text-stone-500">
+            <span>✿ Gyeongnam</span>
+            <span>✈</span>
+            <span>Jakbar ✿</span>
+          </div>
+        </div>
+
+        <!-- KONTAK ADMIN CARD (Compact Icon Bar on Mobile, Full Card on Desktop) -->
+        <div class="bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 cute-border shadow-retro">
+          
+          <div class="flex items-center justify-between border-b pb-1.5 sm:pb-2 border-stone-100 mb-2">
+            <h3 class="font-cute font-bold text-[11px] sm:text-xs text-[#523E34] flex items-center gap-1.5">
+              <i class="ph-fill ph-chat-circle-dots text-pink-400 text-sm"></i>
+              KONTAK ADMIN
+            </h3>
+            <span class="text-[9px] sm:text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+              Fast Respon
+            </span>
+          </div>
+
+          <!-- MOBILE VIEW: Compact Icon Pill Bar (< sm) -->
+          <div class="flex sm:hidden items-center justify-between gap-1.5">
+            <a href="https://wa.me/6281263667594" target="_blank" class="flex-1 flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg cute-border bg-[#F5FFF7] text-[#523E34] font-cute font-bold text-[11px] shadow-retro-sm">
+              <i class="ph-fill ph-whatsapp-logo text-emerald-600 text-base"></i>
+              <span>Winda</span>
+            </a>
+            <a href="https://wa.me/6285159822908" target="_blank" class="flex-1 flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg cute-border bg-[#F5FFF7] text-[#523E34] font-cute font-bold text-[11px] shadow-retro-sm">
+              <i class="ph-fill ph-whatsapp-logo text-emerald-600 text-base"></i>
+              <span>Pivi</span>
+            </a>
+            <a href="https://x.com/OpulentWH" target="_blank" class="flex-1 flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg cute-border bg-[#F0F8FF] text-[#523E34] font-cute font-bold text-[11px] shadow-retro-sm">
+              <i class="ph-bold ph-x-logo text-stone-900 text-sm"></i>
+              <span>Twitter</span>
+            </a>
+          </div>
+
+          <!-- DESKTOP VIEW: Detailed Cards (>= sm) -->
+          <div class="hidden sm:flex flex-col gap-2.5">
+            <!-- WA Winda -->
+            <a href="https://wa.me/6281263667594" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl cute-border bg-[#F5FFF7] hover:bg-emerald-100/60 transition shadow-retro-sm">
+              <div class="flex items-center gap-2">
+                <i class="ph-fill ph-whatsapp-logo text-emerald-600 text-2xl"></i>
+                <div class="text-left">
+                  <div class="font-bold text-xs text-[#523E34]">Admin Winda</div>
+                  <div class="text-[11px] text-stone-500">0812-6366-7594</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 font-cute">Chat ➔</span>
+            </a>
+
+            <!-- WA Pivi -->
+            <a href="https://wa.me/6285159822908" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl cute-border bg-[#F5FFF7] hover:bg-emerald-100/60 transition shadow-retro-sm">
+              <div class="flex items-center gap-2">
+                <i class="ph-fill ph-whatsapp-logo text-emerald-600 text-2xl"></i>
+                <div class="text-left">
+                  <div class="font-bold text-xs text-[#523E34]">Admin Pivi</div>
+                  <div class="text-[11px] text-stone-500">0851-5982-2908</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 font-cute">Chat ➔</span>
+            </a>
+
+            <!-- Twitter X -->
+            <a href="https://x.com/OpulentWH" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl cute-border bg-[#F0F8FF] hover:bg-sky-100/60 transition shadow-retro-sm">
+              <div class="flex items-center gap-2">
+                <i class="ph-bold ph-x-logo text-stone-900 text-2xl"></i>
+                <div class="text-left">
+                  <div class="font-bold text-xs text-[#523E34]">Twitter / X</div>
+                  <div class="text-[11px] text-stone-500">@OpulentWH</div>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-sky-700 font-cute">DM ➔</span>
+            </a>
+
+            <button onclick="switchTab('chat')" class="w-full mt-1 py-2 rounded-xl bg-pink-100 hover:bg-pink-200 text-pink-900 font-cute font-bold text-xs cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              💌 Buat Pesan Kebutuhan
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Sticky Note Form Resi (Hidden on mobile to save vertical space) -->
+        <div class="hidden sm:block bg-cutie-butter rounded-2xl p-3.5 cute-dashed border-amber-800/40 relative">
+          <div class="absolute -top-2.5 left-4 bg-emerald-100 border border-emerald-300 px-2 py-0.5 text-[9px] font-bold text-emerald-800 rounded shadow-xs">
+            📌 PENTING
+          </div>
+          <p class="text-xs text-amber-950 font-semibold mt-1 leading-relaxed">
+            Form resi <strong class="underline">WAJIB diisi</strong> sebelum paket tiba di WH Korea untuk menghindari denda unclaim ya!
+          </p>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT COLUMN: DYNAMIC TABS -->
+      <main id="main-content-container" class="md:col-span-8 transition-all duration-200">
+        
+        <!-- TAB 1: ABOUT US -->
+        <div id="tab-content-about" class="tab-pane bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>🌸</span> Selamat Datang di Opulent Warehouse!
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">About Us ⋆✦</span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-stone-700 leading-relaxed">
+            Opulent Warehouse adalah penyedia jasa <strong>sharing warehouse Korea</strong> dengan gudang resmi berlokasi di <strong>Gyeongnam (Korea Selatan)</strong> dan warehouse transit lokal di <strong>Jakarta Barat</strong>. Kami hadir memberikan solusi belanja barang Korea yang aman, transparan, dan hemat ongkir!
+          </p>
+
+          <!-- 3 Keuntungan Join -->
+          <div class="bg-[#FFFDF9] rounded-xl p-3 sm:p-4 cute-border">
+            <h3 class="font-cute font-bold text-xs sm:text-sm text-[#523E34] mb-2 sm:mb-2.5 flex items-center gap-1.5">
+              🎁 KEUNTUNGAN JOIN OPULENT WAREHOUSE
+            </h3>
+            <ul class="space-y-2 text-xs sm:text-sm text-stone-700">
+              <li class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-pink-100 text-pink-700 font-bold flex items-center justify-center text-xs flex-shrink-0">1</span>
+                <span><strong>Foto Arrived Setiap Hari:</strong> Paket yang sampai di WH Korea selalu difoto berjejer rapi agar kamu tenang.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-pink-100 text-pink-700 font-bold flex items-center justify-center text-xs flex-shrink-0">2</span>
+                <span><strong>Timbangan Real & Transparan:</strong> Tidak ada mark-up timbangan. Rekap gramasi jelas dan akurat.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-pink-100 text-pink-700 font-bold flex items-center justify-center text-xs flex-shrink-0">3</span>
+                <span><strong>Admin Komunikatif & Fast Respon:</strong> Siap membantu konsultasi pembelian web Korea dan update status paket.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Highlight Fasilitas Singkat -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 pt-1 text-center">
+            <div class="bg-pink-50/70 p-2 sm:p-2.5 rounded-xl border border-pink-200">
+              <div class="text-sm sm:text-base mb-0.5">🛒</div>
+              <div class="text-xs font-bold text-pink-900">Free Fee WH</div>
+              <div class="text-[9px] sm:text-[10px] text-pink-700">Tanpa biaya simpan</div>
+            </div>
+            <div class="bg-emerald-50/70 p-2 sm:p-2.5 rounded-xl border border-emerald-200">
+              <div class="text-sm sm:text-base mb-0.5">🏪</div>
+              <div class="text-xs font-bold text-emerald-900">Free Bantaek</div>
+              <div class="text-[9px] sm:text-[10px] text-emerald-700">GS25 & CU Mart</div>
+            </div>
+            <div class="bg-amber-50/70 p-2 sm:p-2.5 rounded-xl border border-amber-200 col-span-2 sm:col-span-1">
+              <div class="text-sm sm:text-base mb-0.5">🧸</div>
+              <div class="text-xs font-bold text-amber-900">Req Vacum</div>
+              <div class="text-[9px] sm:text-[10px] text-amber-700">2.000 - 5.000 Won</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: ALUR & FASILITAS -->
+        <div id="tab-content-alur" class="tab-pane hidden bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>🗺️</span> Alur Pengiriman & Layanan
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">Step by Step ⋆✦</span>
+          </div>
+
+          <!-- Detailed Flow Steps -->
+          <div class="space-y-2.5 sm:space-y-3">
+            <div class="p-3 sm:p-3.5 bg-cutie-cream rounded-xl cute-border flex items-start gap-2.5 sm:gap-3">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#523E34] text-white font-bold flex items-center justify-center flex-shrink-0 font-cute text-xs sm:text-sm">1</div>
+              <div>
+                <h4 class="font-bold text-xs sm:text-sm text-[#523E34]">Checkout ke Warehouse Korea (Gyeongnam)</h4>
+                <p class="text-xs text-stone-600 mt-0.5">
+                  Gunakan format alamat WH Gyeongnam lengkap dengan marking name milikmu. Nikmati <strong>Free Checkout Web Korea</strong> dari admin jika kamu butuh bantuan checkout!
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3 sm:p-3.5 bg-cutie-cream rounded-xl cute-border flex items-start gap-2.5 sm:gap-3">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#523E34] text-white font-bold flex items-center justify-center flex-shrink-0 font-cute text-xs sm:text-sm">2</div>
+              <div>
+                <h4 class="font-bold text-xs sm:text-sm text-[#523E34]">Paket Tiba & Diperiksa</h4>
+                <p class="text-xs text-stone-600 mt-0.5">
+                  Paket arrived difoto setiap hari dan diupload ke album. Wajib pastikan form resi sudah kamu submit sebelum barang tiba.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3 sm:p-3.5 bg-cutie-cream rounded-xl cute-border flex items-start gap-2.5 sm:gap-3">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#523E34] text-white font-bold flex items-center justify-center flex-shrink-0 font-cute text-xs sm:text-sm">3</div>
+              <div>
+                <h4 class="font-bold text-xs sm:text-sm text-[#523E34]">Penerbangan Korea ➔ Indonesia (Rutin 1x Seminggu)</h4>
+                <p class="text-xs text-stone-600 mt-0.5">
+                  Pengiriman via EMS atau Cargo dengan proses customs clearance resmi hingga tiba di warehouse Jakarta Barat.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3 sm:p-3.5 bg-cutie-cream rounded-xl cute-border flex items-start gap-2.5 sm:gap-3">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#523E34] text-white font-bold flex items-center justify-center flex-shrink-0 font-cute text-xs sm:text-sm">4</div>
+              <div>
+                <h4 class="font-bold text-xs sm:text-sm text-[#523E34]">Pelunasan Tagihan Tax & Pengiriman Lokal</h4>
+                <p class="text-xs text-stone-600 mt-0.5">
+                  Setelah tagihan tax dilunasi, paket langsung dikirimkan ke alamatmu via Shopee (JNE & Anteraja) atau manual (diproses H+1).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: HARGA EMS & CARGO (Horizontally Scrollable Table for Mobile) -->
+        <div id="tab-content-pricing" class="tab-pane hidden bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>🏷️</span> Daftar Tarif EMS & Cargo + Tax
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">Transparan ⋆✦</span>
+          </div>
+
+          <!-- Mobile Hint Swipe -->
+          <div class="sm:hidden flex items-center justify-between bg-pink-50 px-2.5 py-1 rounded-lg border border-pink-200 text-[10px] text-pink-700 font-cute font-bold">
+            <span>👉 Geser tabel ke samping untuk info lengkap</span>
+            <span>⇄</span>
+          </div>
+
+          <!-- Table Container with Horizontal Scroll -->
+          <div class="overflow-x-auto rounded-xl cute-border">
+            <table class="w-full min-w-[480px] text-left text-xs sm:text-sm">
+              <thead class="bg-[#523E34] text-white font-cute text-xs">
+                <tr>
+                  <th class="p-2.5 sm:p-3 whitespace-nowrap">Kategori Barang</th>
+                  <th class="p-2.5 sm:p-3 whitespace-nowrap">Estimasi Biaya</th>
+                  <th class="p-2.5 sm:p-3 whitespace-nowrap">Catatan Tambahan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-stone-200 bg-stone-50/50">
+                <tr class="hover:bg-pink-50/40">
+                  <td class="p-2.5 sm:p-3 font-bold text-[#523E34] whitespace-nowrap">
+                    Photocard (PC)
+                  </td>
+                  <td class="p-2.5 sm:p-3 font-semibold text-pink-700 whitespace-nowrap">
+                    Rp 3.000 / pc
+                  </td>
+                  <td class="p-2.5 sm:p-3 text-[11px] text-stone-600">
+                    <span class="bg-pink-100 text-pink-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-pink-200">
+                      Diskon Rp 2.500/pc jika &gt; 40 pc dlm 1 resi
+                    </span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-pink-50/40">
+                  <td class="p-2.5 sm:p-3 font-bold text-[#523E34] whitespace-nowrap">
+                    Postcard / Lembaran Majalah
+                  </td>
+                  <td class="p-2.5 sm:p-3 font-semibold text-pink-700 whitespace-nowrap">
+                    Rp 4.000 - 5.000 / pcs
+                  </td>
+                  <td class="p-2.5 sm:p-3 text-[11px] text-stone-600">
+                    Tergantung dimensi & ketebalan lembaran
+                  </td>
+                </tr>
+                <tr class="hover:bg-pink-50/40">
+                  <td class="p-2.5 sm:p-3 font-bold text-[#523E34] whitespace-nowrap">
+                    Rate EMS Standar
+                  </td>
+                  <td class="p-2.5 sm:p-3 font-semibold text-pink-700 whitespace-nowrap">
+                    Rp 180 - 200 / gram
+                  </td>
+                  <td class="p-2.5 sm:p-3 text-[11px] text-stone-600">
+                    Estimasi EMS + Pajak Masuk (Tax)
+                  </td>
+                </tr>
+                <tr class="hover:bg-pink-50/40">
+                  <td class="p-2.5 sm:p-3 font-bold text-[#523E34] whitespace-nowrap">
+                    Rate Textile / Pakaian
+                  </td>
+                  <td class="p-2.5 sm:p-3 font-semibold text-pink-700 whitespace-nowrap">
+                    Rp 210 - 250 / gram
+                  </td>
+                  <td class="p-2.5 sm:p-3 text-[11px] text-stone-600">
+                    Wajib tanyakan dahulu untuk jumlah banyak
+                  </td>
+                </tr>
+                <tr class="hover:bg-pink-50/40 bg-amber-50/40">
+                  <td class="p-2.5 sm:p-3 font-bold text-amber-900 whitespace-nowrap">
+                    Cargo Reguler
+                  </td>
+                  <td class="p-2.5 sm:p-3 font-semibold text-amber-800 whitespace-nowrap">
+                    Rp 190 - 220 / gram
+                  </td>
+                  <td class="p-2.5 sm:p-3 text-[11px] text-stone-600">
+                    Pembulatan per 50 gram
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-2.5 sm:p-3 bg-amber-50 rounded-xl cute-dashed text-xs text-amber-900">
+            💡 <strong>Info:</strong> Tarif di atas sudah termasuk estimasi pengiriman internasional (EMS/Cargo) dan bea cukai/tax hingga sampai ke Warehouse Jakarta Barat.
+          </div>
+        </div>
+
+        <!-- TAB 4: KALKULATOR BELANJA & SPLIT BILL -->
+        <div id="tab-content-calc" class="tab-pane hidden bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>🧮</span> Kalkulator Belanja & Split Bill
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">Estimasi Akurat ⋆✦</span>
+          </div>
+
+          <!-- Grid Input Form -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
+            
+            <!-- 1. Harga Won & Kurs -->
+            <div class="bg-stone-50 p-2.5 sm:p-3 rounded-xl border border-stone-200">
+              <label class="block text-xs font-bold text-[#523E34] mb-1">
+                1. Harga Barang (KRW ₩)
+              </label>
+              <div class="flex gap-2">
+                <input type="number" id="calc-krw" placeholder="Contoh: 15000" oninput="calculateAll()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+                <div class="flex items-center gap-1 bg-white px-2 rounded-lg cute-border">
+                  <span class="text-[10px] font-bold text-stone-500">Rate:</span>
+                  <input type="number" id="calc-rate" value="12.2" step="0.1" oninput="calculateAll()" class="w-12 text-xs font-bold text-[#523E34] focus:outline-none text-right">
+                </div>
+              </div>
+              <div class="mt-1 text-[11px] text-pink-700 font-bold" id="clean-kr-text">
+                Bersih Korea: Rp 0
+              </div>
+            </div>
+
+            <!-- 2. Ongkir Lokal KR / Admin Fee -->
+            <div class="bg-stone-50 p-2.5 sm:p-3 rounded-xl border border-stone-200">
+              <div class="flex items-center justify-between mb-1">
+                <label class="text-xs font-bold text-[#523E34]">
+                  2. Ongkir Lokal KR / Admin
+                </label>
+                <!-- Toggle Currency -->
+                <div class="inline-flex rounded-md p-0.5 bg-stone-200 text-[10px] font-bold">
+                  <button type="button" id="curr-won-btn" onclick="setFeeCurrency('won')" class="px-2 py-0.5 rounded bg-white text-[#523E34] shadow-xs">₩ Won</button>
+                  <button type="button" id="curr-idr-btn" onclick="setFeeCurrency('idr')" class="px-2 py-0.5 rounded text-stone-600">Rp IDR</button>
+                </div>
+              </div>
+              <input type="number" id="calc-fee" placeholder="0" oninput="calculateAll()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+              <div class="mt-1 text-[11px] text-stone-500 font-medium" id="fee-converted-text">
+                Rp 0 (Free / Tidak ada)
+              </div>
+            </div>
+
+            <!-- 3. Kategori Pengiriman & Berat/Qty -->
+            <div class="bg-stone-50 p-2.5 sm:p-3 rounded-xl border border-stone-200">
+              <label class="block text-xs font-bold text-[#523E34] mb-1">
+                3. Tipe Pengiriman / Estimasi Tax
+              </label>
+              <select id="calc-type" onchange="updateCalcType()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300 mb-2">
+                <option value="gram">Rate Standar EMS (per Gram)</option>
+                <option value="pc">Photocard (Rp 3.000 / &gt;40 diskon Rp 2.500)</option>
+                <option value="postcard">Postcard / Majalah (Rp 4.500 / pc)</option>
+                <option value="textile">Textile / Pakaian (per Gram)</option>
+                <option value="cargo">Cargo Reguler (per Gram - Bulat 50g)</option>
+              </select>
+              
+              <div class="flex gap-2">
+                <input type="number" id="calc-weight" placeholder="Jumlah Gram / Lembar" oninput="calculateAll()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+                <input type="number" id="calc-custom-rate" placeholder="Rate/gr (190)" value="190" oninput="calculateAll()" class="w-24 p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+              </div>
+              <div class="mt-1 text-[11px] text-stone-600 font-bold" id="shipping-result-text">
+                Estimasi EMS+Tax: Rp 0
+              </div>
+            </div>
+
+            <!-- 4. Split Bill (Dibagi ke Berapa Orang/Item) -->
+            <div class="bg-stone-50 p-2.5 sm:p-3 rounded-xl border border-stone-200">
+              <label class="block text-xs font-bold text-[#523E34] mb-1">
+                4. Split Bill (Bagi ke berapa orang/item)
+              </label>
+              <input type="number" id="calc-split" value="1" min="1" oninput="calculateAll()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+              <div class="mt-1 text-[11px] text-stone-500">
+                Isi 1 jika untuk pembelian pribadi
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Total Result Card -->
+          <div class="p-3.5 sm:p-4 bg-pink-50 rounded-xl sm:rounded-2xl cute-border shadow-retro-sm">
+            <div class="flex items-center justify-between border-b border-pink-200 pb-2">
+              <span class="text-xs font-cute font-bold text-pink-900">✨ TOTAL ESTIMASI BERSIH INDONESIA</span>
+              <span class="text-sm sm:text-lg font-bold text-pink-700" id="total-price-text">Rp 0</span>
+            </div>
+            
+            <div class="mt-2.5 flex items-center justify-between text-xs">
+              <span class="font-bold text-[#523E34]">Harga EACH (per orang/item):</span>
+              <span class="font-bold text-xs sm:text-sm text-[#523E34] bg-white px-2.5 sm:px-3 py-1 rounded-full border border-stone-300" id="each-price-text">Rp 0 / each</span>
+            </div>
+
+            <button onclick="copyCalculation()" class="w-full mt-3 py-2 bg-white hover:bg-stone-50 text-[#523E34] text-xs font-cute font-bold rounded-xl cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              📋 Salin Rincian Perhitungan
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 5: RULES & TNC -->
+        <div id="tab-content-terms" class="tab-pane hidden bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>⚠️</span> Syarat & Ketentuan Warehouse
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">11 Poin Wajib ⋆✦</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs text-stone-700 leading-relaxed max-h-[460px] overflow-y-auto pr-1">
+            
+            <div class="p-3 bg-red-50/60 rounded-xl border border-red-200 flex gap-2.5">
+              <span class="font-bold text-red-700">1.</span>
+              <span><strong>BARANG TERLARANG:</strong> Tidak menerima SENJATA TAJAM, ALKOHOL, PORNOGRAFI/18+, ELEKTRONIK, BUBUK dan barang lainnya yang dilarang EMS. Jika tetap dikirim ke WH KR maka <u>tidak dibawa ke INDONESIA</u>.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">2.</span>
+              <span>Tidak menerima <strong>textile dalam jumlah besar</strong>. Ada baiknya ditanyakan dan dikonsultasikan terlebih dahulu sebelum pengiriman.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">3.</span>
+              <span>WH <strong>tidak bertanggung jawab</strong> atas kehilangan, kerusakan, keterlambatan atau kendala yang disebabkan oleh seller, platform/web, ekspedisi, bea cukai maupun pihak ketiga lainnya yang di luar kendali kami.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">4.</span>
+              <span>WH akan membantu melakukan follow up apabila memungkinkan, namun <strong>tidak berkewajiban</strong> memberikan penggantian dana atau barang.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">5.</span>
+              <span>Segala resiko yang timbul akibat tidak mengikuti TnC dan peraturan WAREHOUSE akan menjadi <strong>tanggung jawab pengguna sepenuhnya</strong>.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">6.</span>
+              <span><strong>AWARE SAMA BARANG YANG DIBELI:</strong> Rajin cek album ARRIVED WAREHOUSE, UNCLAIM, SPS REKAP. (Kami memang penyedia jasa, tapi kamu juga wajib peduli dengan barangmu sendiri).</span>
+            </div>
+
+            <div class="p-3 bg-amber-50/70 rounded-xl border border-amber-300 flex gap-2.5">
+              <span class="font-bold text-amber-800">7.</span>
+              <span><strong>FORM RESI WAJIB DIISI</strong> sebelum barang sampai ke WH. Barang UNCLAIM jika sampai ke INA akan dikenakan denda <strong>Rp 5.000 / hari</strong> mulai dari note tagihan diberikan.</span>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 flex gap-2.5">
+              <span class="font-bold text-[#523E34]">8.</span>
+              <span>Pastikan alamat yang kamu pakai <strong>100% BENAR – tanpa diubah!</strong> Nama, nomor telepon, dan marking name terutama di Alamat kedua.</span>
+            </div>
+
+            <div class="p-3 bg-amber-50/70 rounded-xl border border-amber-300 flex gap-2.5">
+              <span class="font-bold text-amber-800">9.</span>
+              <span><strong>BAYAR TAGIHAN TEPAT WAKTU (Jangan ditunda):</strong> Tagihan tax harus dibayar sebelum deadline tertera. Telat = denda <strong>Rp 5.000 / hari / box</strong>. (Jika ada kendala pembayaran, kabari admin sebelum deadline agar tidak terkena denda). Telat &gt;30 hari barang menjadi milik WH.</span>
+            </div>
+
+            <div class="p-3 bg-red-50/80 rounded-xl border border-red-300 flex gap-2.5">
+              <span class="font-bold text-red-800">10.</span>
+              <span><strong>JANGAN SEBARKAN ALAMAT ATAU NOMOR WAREHOUSE:</strong> Jika ketahuan menyebarkan, akan dikenakan denda <strong>Rp 10.000.000</strong>.</span>
+            </div>
+
+            <div class="p-3 bg-red-50/80 rounded-xl border border-red-300 flex gap-2.5">
+              <span class="font-bold text-red-800">11.</span>
+              <span><strong>TIDAK MELAYANI COD DI WAREHOUSE KOREA:</strong> Jika melakukan COD akan dikenakan denda <strong>3x harga ongkir</strong>.</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB 6: TEMPLATE & HUBUNGI ADMIN (Optimized for Mobile) -->
+        <div id="tab-content-chat" class="tab-pane hidden bg-white rounded-xl sm:rounded-2xl p-3.5 sm:p-6 cute-border shadow-retro space-y-3 sm:space-y-4">
+          <div class="border-b-2 border-dashed border-stone-200 pb-2.5 sm:pb-3 flex items-center justify-between">
+            <h2 class="font-cute font-bold text-sm sm:text-lg text-[#523E34] flex items-center gap-1.5 sm:gap-2">
+              <span>💌</span> Hubungi Admin & Template Chat
+            </h2>
+            <span class="text-[11px] sm:text-xs font-cute text-stone-500">1-Click Send ⋆✦</span>
+          </div>
+
+          <!-- Kebutuhan Selector (4 Cards) -->
+          <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
+            
+            <button type="button" onclick="selectIntent('tanya')" id="intent-btn-tanya" class="intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-pink-100/70 border-[#523E34] shadow-retro-sm">
+              <div class="text-sm sm:text-base mb-0.5 sm:mb-1">💬</div>
+              <div class="font-bold text-[11px] sm:text-xs text-[#523E34]">Tanya-tanya WH</div>
+              <div class="text-[9px] sm:text-[10px] text-stone-600 mt-0.5">Alur, jadwal, atau estimasi tax</div>
+            </button>
+
+            <button type="button" onclick="selectIntent('join')" id="intent-btn-join" class="intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-stone-50 hover:bg-pink-50">
+              <div class="text-sm sm:text-base mb-0.5 sm:mb-1">🎀</div>
+              <div class="font-bold text-[11px] sm:text-xs text-[#523E34]">Tertarik Mau Join</div>
+              <div class="text-[9px] sm:text-[10px] text-stone-600 mt-0.5">Ketersediaan slot & alur gabung</div>
+            </button>
+
+            <button type="button" onclick="selectIntent('jasa')" id="intent-btn-jasa" class="intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-stone-50 hover:bg-pink-50">
+              <div class="text-sm sm:text-base mb-0.5 sm:mb-1">🛒</div>
+              <div class="font-bold text-[11px] sm:text-xs text-[#523E34]">Jasa CO / Transfer</div>
+              <div class="text-[9px] sm:text-[10px] text-stone-600 mt-0.5">Free checkout web Korea / seller</div>
+            </button>
+
+            <button type="button" onclick="selectIntent('tracking')" id="intent-btn-tracking" class="intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-stone-50 hover:bg-pink-50">
+              <div class="text-sm sm:text-base mb-0.5 sm:mb-1">🔍</div>
+              <div class="font-bold text-[11px] sm:text-xs text-[#523E34]">Tracking Paket</div>
+              <div class="text-[9px] sm:text-[10px] text-stone-600 mt-0.5">Cek status resi / batch box</div>
+            </button>
+
+          </div>
+
+          <!-- Form Input Personalisasi -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 pt-0.5">
+            <div>
+              <label class="block text-[10px] sm:text-[11px] font-bold text-[#523E34] mb-0.5 sm:mb-1">Nama / Akun X Kamu</label>
+              <input type="text" id="chat-user-name" placeholder="Misal: Dinda" oninput="renderAestheticMessage()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+            </div>
+            <div>
+              <label class="block text-[10px] sm:text-[11px] font-bold text-[#523E34] mb-0.5 sm:mb-1">No. Resi / Batch Box</label>
+              <input type="text" id="chat-user-resi" placeholder="Opsional (untuk tracking)" oninput="renderAestheticMessage()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+            </div>
+            <div>
+              <label class="block text-[10px] sm:text-[11px] font-bold text-[#523E34] mb-0.5 sm:mb-1">Catatan / Detail Barang</label>
+              <input type="text" id="chat-user-note" placeholder="Misal: Beli album Weverse" oninput="renderAestheticMessage()" class="w-full p-2 text-xs rounded-lg cute-border focus:outline-none focus:ring-2 focus:ring-pink-300">
+            </div>
+          </div>
+
+          <!-- Pratinjau Pesan Estetik -->
+          <div class="relative">
+            <div class="text-[10px] sm:text-[11px] font-cute font-bold text-stone-600 mb-1 flex items-center justify-between">
+              <span>Pratinjau Pesan Otomatis:</span>
+              <span class="text-[10px] text-pink-600 font-bold">Siap kirim 🌸</span>
+            </div>
+            <textarea id="aesthetic-chat-output" rows="4" class="w-full p-2.5 sm:p-3 text-xs rounded-xl cute-border bg-[#FFFDF9] font-sans text-stone-800 focus:outline-none leading-relaxed shadow-inner" placeholder="Pesan akan tersusun otomatis di sini..."></textarea>
+          </div>
+
+          <!-- Tombol Kirim Cepat & Salin Pesan -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-0.5">
+            <button onclick="sendChatTo('winda')" class="py-2 sm:py-2.5 px-2 sm:px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-cute font-bold cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-fill ph-whatsapp-logo text-base"></i>
+              WA Winda
+            </button>
+            <button onclick="sendChatTo('pivi')" class="py-2 sm:py-2.5 px-2 sm:px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-cute font-bold cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-fill ph-whatsapp-logo text-base"></i>
+              WA Pivi
+            </button>
+            <button onclick="sendChatTo('twitter')" class="py-2 sm:py-2.5 px-2 sm:px-3 bg-stone-900 hover:bg-black text-white rounded-xl text-xs font-cute font-bold cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-x-logo text-sm"></i>
+              DM Twitter
+            </button>
+            <button onclick="copyChatMessage()" class="py-2 sm:py-2.5 px-2 sm:px-3 bg-white hover:bg-stone-50 text-[#523E34] rounded-xl text-xs font-cute font-bold cute-border shadow-retro-sm transition flex items-center justify-center gap-1.5">
+              <i class="ph-bold ph-copy text-sm"></i>
+              Salin Pesan
+            </button>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- 6. FOOTER -->
+    <footer class="bg-white border-t-2 border-[#523E34] px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs font-cute text-stone-600 flex flex-col sm:flex-row items-center justify-between gap-1">
+      <div>
+        🌸 <strong>Opulent Warehouse</strong> • Korean Sharing Warehouse Service
+      </div>
+      <div class="text-[10px] sm:text-[11px] text-stone-500">
+        Gyeongnam, South Korea ✈ Jakarta Barat, Indonesia ♡
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-[#523E34] text-white px-4 py-2 rounded-xl text-xs font-cute font-bold cute-border shadow-retro-lg transition-all duration-300 opacity-0 pointer-events-none translate-y-3 z-50">
+    Berhasil disalin! 🌸
+  </div>
+
+  <!-- INTERACTIVE LOGIC JAVASCRIPT -->
+  <script>
+    // --- 1. NATIVE WEB AUDIO (Cute Pop & Chime Effects Without External Libs) ---
+    let audioCtx = null;
+    function playCuteSound(type = 'pop') {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(580, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.07);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+          osc.start(now);
+          osc.stop(now + 0.07);
+        } else if (type === 'chime') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.05);
+          osc.frequency.setValueAtTime(783.99, now + 0.10);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        } else if (type === 'sparkle') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.exponentialRampToValueAtTime(1760, now + 0.12);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        }
+      } catch (err) {
+        // Safe failover
+      }
+    }
+
+    // Attach global click sound
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('button, a, input, select');
+      if (target) {
+        playCuteSound('pop');
+      }
+    });
+
+    // --- 2. TAB SWITCHING LOGIC ---
+    const allTabIds = ['about', 'alur', 'pricing', 'calc', 'terms', 'chat'];
+    function switchTab(activeId) {
+      playCuteSound('chime');
+
+      // 1. Toggle Flight Journey: Hanya di 'about'
+      const flightEl = document.getElementById('flight-journey-section');
+      if (flightEl) {
+        if (activeId === 'about') {
+          flightEl.classList.remove('hidden');
+        } else {
+          flightEl.classList.add('hidden');
+        }
+      }
+
+      // 2. Toggle Sidebar (Logo & Kontak): Hanya di 'about' & 'chat'
+      const sidebarEl = document.getElementById('main-profile-sidebar');
+      const contentEl = document.getElementById('main-content-container');
+      const hideSidebarTabs = ['alur', 'pricing', 'calc', 'terms'];
+      const isHidden = hideSidebarTabs.includes(activeId);
+
+      if (sidebarEl) {
+        if (isHidden) {
+          sidebarEl.classList.add('hidden');
+        } else {
+          sidebarEl.classList.remove('hidden');
+        }
+      }
+
+      if (contentEl) {
+        if (isHidden) {
+          contentEl.classList.remove('md:col-span-8');
+          contentEl.classList.add('md:col-span-12');
+        } else {
+          contentEl.classList.remove('md:col-span-12');
+          contentEl.classList.add('md:col-span-8');
+        }
+      }
+
+      // 3. Switch Tab Panes
+      allTabIds.forEach(id => {
+        const pane = document.getElementById('tab-content-' + id);
+        const btn = document.getElementById('btn-tab-' + id);
+
+        if (pane) {
+          if (id === activeId) {
+            pane.classList.remove('hidden');
+          } else {
+            pane.classList.add('hidden');
+          }
+        }
+
+        if (btn) {
+          if (id === activeId) {
+            btn.className = 'nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-[#523E34] text-white shadow-retro-sm';
+          } else {
+            btn.className = 'nav-tab-btn px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-cute font-bold cute-border transition-all bg-white text-[#523E34] hover:bg-cutie-rose/40';
+          }
+        }
+      });
+    }
+
+    // --- 3. KALKULATOR BELANJA & SHIPPING ---
+    let feeCurrency = 'won'; // 'won' or 'idr'
+
+    function setFeeCurrency(curr) {
+      feeCurrency = curr;
+      const wonBtn = document.getElementById('curr-won-btn');
+      const idrBtn = document.getElementById('curr-idr-btn');
+
+      if (curr === 'won') {
+        wonBtn.className = 'px-2 py-0.5 rounded bg-white text-[#523E34] shadow-xs';
+        idrBtn.className = 'px-2 py-0.5 rounded text-stone-600';
+      } else {
+        idrBtn.className = 'px-2 py-0.5 rounded bg-white text-[#523E34] shadow-xs';
+        wonBtn.className = 'px-2 py-0.5 rounded text-stone-600';
+      }
+      calculateAll();
+    }
+
+    function updateCalcType() {
+      const type = document.getElementById('calc-type').value;
+      const rateInput = document.getElementById('calc-custom-rate');
+      const weightInput = document.getElementById('calc-weight');
+
+      if (type === 'gram') {
+        rateInput.style.display = 'block';
+        rateInput.value = '190';
+        weightInput.placeholder = 'Berat barang (Gram)';
+      } else if (type === 'pc') {
+        rateInput.style.display = 'none';
+        weightInput.placeholder = 'Jumlah Photocard (pcs)';
+      } else if (type === 'postcard') {
+        rateInput.style.display = 'none';
+        weightInput.placeholder = 'Jumlah Postcard (pcs)';
+      } else if (type === 'textile') {
+        rateInput.style.display = 'block';
+        rateInput.value = '230';
+        weightInput.placeholder = 'Berat Textile (Gram)';
+      } else if (type === 'cargo') {
+        rateInput.style.display = 'block';
+        rateInput.value = '200';
+        weightInput.placeholder = 'Berat Cargo (Gram)';
+      }
+      calculateAll();
+    }
+
+    function calculateAll() {
+      const krwVal = parseFloat(document.getElementById('calc-krw').value) || 0;
+      const rateVal = parseFloat(document.getElementById('calc-rate').value) || 12.2;
+      const feeVal = parseFloat(document.getElementById('calc-fee').value) || 0;
+      const type = document.getElementById('calc-type').value;
+      const weightVal = parseFloat(document.getElementById('calc-weight').value) || 0;
+      const customRate = parseFloat(document.getElementById('calc-custom-rate').value) || 190;
+      const splitVal = Math.max(1, parseInt(document.getElementById('calc-split').value) || 1);
+
+      // 1. Bersih Korea
+      const cleanKR = Math.round(krwVal * rateVal);
+      document.getElementById('clean-kr-text').innerText = 'Bersih Korea: Rp ' + cleanKR.toLocaleString('id-ID');
+
+      // 2. Fee Ongkir Lokal KR / Admin
+      let feeInIDR = 0;
+      if (feeCurrency === 'won') {
+        feeInIDR = Math.round(feeVal * rateVal);
+        document.getElementById('fee-converted-text').innerText = feeVal > 0 
+          ? 'Setara: Rp ' + feeInIDR.toLocaleString('id-ID') + ' (₩' + feeVal.toLocaleString() + ')' 
+          : 'Rp 0 (Free / Tidak ada)';
+      } else {
+        feeInIDR = Math.round(feeVal);
+        document.getElementById('fee-converted-text').innerText = feeVal > 0 
+          ? 'Nominal: Rp ' + feeInIDR.toLocaleString('id-ID') 
+          : 'Rp 0 (Free / Tidak ada)';
+      }
+
+      // 3. EMS / Shipping
+      let shippingCost = 0;
+      let shippingNote = '';
+
+      if (type === 'pc') {
+        const pcRate = weightVal > 40 ? 2500 : 3000;
+        shippingCost = weightVal * pcRate;
+        shippingNote = weightVal > 40 
+          ? `Diskon >40pc (Rp ${pcRate.toLocaleString('id-ID')}/pc)` 
+          : `Rp ${pcRate.toLocaleString('id-ID')}/pc`;
+      } else if (type === 'postcard') {
+        shippingCost = weightVal * 4500;
+        shippingNote = 'Estimasi Rp 4.500/pc';
+      } else if (type === 'cargo') {
+        const roundedWeight = Math.ceil(weightVal / 50) * 50;
+        shippingCost = roundedWeight * customRate;
+        shippingNote = `Bulat 50g (${roundedWeight}g x Rp ${customRate})`;
+      } else {
+        shippingCost = weightVal * customRate;
+        shippingNote = `${weightVal}g x Rp ${customRate}`;
+      }
+
+      document.getElementById('shipping-result-text').innerText = 'Estimasi EMS+Tax: Rp ' + Math.round(shippingCost).toLocaleString('id-ID') + (shippingNote ? ' (' + shippingNote + ')' : '');
+
+      // 4. Total & Each
+      const totalCost = cleanKR + feeInIDR + Math.round(shippingCost);
+      const eachCost = Math.round(totalCost / splitVal);
+
+      document.getElementById('total-price-text').innerText = 'Rp ' + totalCost.toLocaleString('id-ID');
+      document.getElementById('each-price-text').innerText = 'Rp ' + eachCost.toLocaleString('id-ID') + (splitVal > 1 ? ` / each (${splitVal} org)` : ' / total');
+    }
+
+    function copyCalculation() {
+      playCuteSound('sparkle');
+      const krwVal = document.getElementById('calc-krw').value || '0';
+      const cleanKR = document.getElementById('clean-kr-text').innerText;
+      const feeConverted = document.getElementById('fee-converted-text').innerText;
+      const shippingResult = document.getElementById('shipping-result-text').innerText;
+      const splitVal = document.getElementById('calc-split').value || '1';
+      const totalPrice = document.getElementById('total-price-text').innerText;
+      const eachPrice = document.getElementById('each-price-text').innerText;
+
+      const text = `⋆｡°✩ RINCIAN BELANJA OPULENT WAREHOUSE ✩°｡⋆\n` +
+        `• Harga Won: ₩${krwVal}\n` +
+        `• ${cleanKR}\n` +
+        `• Ongkir Lokal KR/Fee: ${feeConverted}\n` +
+        `• ${shippingResult}\n` +
+        `• Pembagian: ${splitVal} orang/item\n` +
+        `───────────────\n` +
+        `🌸 TOTAL ESTIMASI BERSIH: ${totalPrice}\n` +
+        `🌸 HARGA EACH: ${eachPrice}\n` +
+        `♡ Thank you! ♡`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Rincian perhitungan berhasil disalin! 🌸');
+      });
+    }
+
+    // --- 4. TEMPLATE CHAT DISPATCHER (Tanpa kata 'kak') ---
+    let currentIntent = 'tanya';
+
+    function selectIntent(intent) {
+      currentIntent = intent;
+      const buttons = ['tanya', 'join', 'jasa', 'tracking'];
+      buttons.forEach(b => {
+        const el = document.getElementById('intent-btn-' + b);
+        if (el) {
+          if (b === intent) {
+            el.className = 'intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-pink-100/70 border-[#523E34] shadow-retro-sm';
+          } else {
+            el.className = 'intent-card p-2.5 sm:p-3 rounded-xl cute-border text-left transition bg-stone-50 hover:bg-pink-50';
+          }
+        }
+      });
+      renderAestheticMessage();
+    }
+
+    function renderAestheticMessage() {
+      const name = document.getElementById('chat-user-name').value.trim();
+      const resi = document.getElementById('chat-user-resi').value.trim();
+      const note = document.getElementById('chat-user-note').value.trim();
+
+      const userGreeting = name ? `Aku ${name}` : 'Halo';
+      let message = '';
+
+      if (currentIntent === 'tanya') {
+        message = `Halo Opulent Warehouse! 🌸\n\n` +
+          `${userGreeting} mau tanya-tanya seputar layanan sharing warehouse Korea di Opulent.` +
+          (note ? `\n\nUntuk rencana pembelian: ${note}` : '') +
+          `\n\nBoleh minta info lebih lanjutnya yaa, terima kasih banyak! ♡`;
+      } else if (currentIntent === 'join') {
+        message = `Halo Opulent Warehouse! 🌸\n\n` +
+          `${userGreeting} tertarik untuk join sharing warehouse Koreanya.` +
+          `\nApakah saat ini masih tersedia slot untuk member baru? Boleh minta penjelasan syarat dan alur bergabungnya yaa.` +
+          (note ? `\n\nRencana belanja: ${note}` : '') +
+          `\n\nTerima kasih banyak! ♡`;
+      } else if (currentIntent === 'jasa') {
+        message = `Halo Opulent Warehouse! 🌸\n\n` +
+          `${userGreeting} mau minta bantuan untuk jasa checkout web Korea / transfer seller.` +
+          (note ? `\n\nDetail web / pesanan: ${note}` : '') +
+          `\n\nBoleh dibantu info kurs dan cara ordernya yaa, terima kasih! ♡`;
+      } else if (currentIntent === 'tracking') {
+        message = `Halo Opulent Warehouse! 🌸\n\n` +
+          `${userGreeting} mau tanya perihal tracking paket sharing warehouse Korea.` +
+          (resi ? `\n• No. Resi / Batch: ${resi}` : '') +
+          (note ? `\n• Keterangan Barang: ${note}` : '') +
+          `\n\nApakah paket ini sudah ada update arrived di WH yaa? Terima kasih banyak! ♡`;
+      }
+
+      document.getElementById('aesthetic-chat-output').value = message;
+    }
+
+    function sendChatTo(dest) {
+      playCuteSound('sparkle');
+      const text = document.getElementById('aesthetic-chat-output').value.trim();
+      const encoded = encodeURIComponent(text);
+
+      if (dest === 'winda') {
+        window.open(`https://wa.me/6281263667594?text=${encoded}`, '_blank');
+      } else if (dest === 'pivi') {
+        window.open(`https://wa.me/6285159822908?text=${encoded}`, '_blank');
+      } else if (dest === 'twitter') {
+        window.open(`https://twitter.com/OpulentWH`, '_blank');
+      }
+    }
+
+    function copyChatMessage() {
+      playCuteSound('sparkle');
+      const text = document.getElementById('aesthetic-chat-output').value;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Pesan berhasil disalin! 💌');
+      });
+    }
+
+    // --- 5. TOAST NOTIFICATION ---
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.innerText = msg;
+        toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+        }, 2500);
+      }
+    }
+
+    // Initial setups
+    window.addEventListener('DOMContentLoaded', () => {
+      calculateAll();
+      renderAestheticMessage();
+    });
+  </script>
+</body>
+</html>
